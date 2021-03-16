@@ -1,0 +1,23 @@
+logging:
+  file:
+    name: logs/application.log
+spring:
+  datasource:
+     driverClassName: com.mysql.jdbc.Driver
+     url: jdbc:mysql://localhost:3306/work-test?useSSL=false&serverTimezone=UTC
+     username: root
+     password: 123456
+  jpa:
+    hibernate:
+       ddl-auto: update
+    generate-ddl: true
+    show-sql: true
+security:
+   jwt:
+      token:
+         secret-key: secret
+      expire-length: 3600000
+         
+server:
+  port: 8080
+  session-timeout: 30
