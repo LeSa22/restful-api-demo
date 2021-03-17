@@ -41,6 +41,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplicat
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.StopWatch;
 import org.springframework.util.StringUtils;
@@ -165,7 +166,7 @@ public class SwaggerAutoConfiguration {
             .forCodeGeneration(true)
             .directModelSubstitute(ByteBuffer.class, String.class)
             .genericModelSubstitutes(ResponseEntity.class)
-            //.ignoredParameterTypes(Pageable.class)
+            .ignoredParameterTypes(Pageable.class)
             .select()
             .apis(RequestHandlerSelectors.basePackage("com.spring.controller"))
             .paths(PathSelectors.any())

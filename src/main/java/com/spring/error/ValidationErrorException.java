@@ -1,6 +1,7 @@
 package com.spring.error;
 
 import java.net.URI;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -14,7 +15,6 @@ public class ValidationErrorException extends ThrowableProblem {
      * Constant serialVersionUID.
      */
     private static final long serialVersionUID = -5386968192167592489L;
-    public static final String PROBLEM_BASE_URL = "https://www.jhipster.tech/problem";
 
     /**
      * type.
@@ -36,8 +36,24 @@ public class ValidationErrorException extends ThrowableProblem {
      */
     private final Status statusError;
 
+    /**
+     * 
+     * @param entityName
+     * @param statusError
+     * @param errors
+     */
     public ValidationErrorException(String entityName, Status statusError, List<ValidateError> errors) {
-        this(URI.create(PROBLEM_BASE_URL + "/problem-with-message"), statusError, entityName, errors);
+        this(ErrorConstants.DEFAULT_TYPE, statusError, entityName, errors);
+    }
+    
+    /**
+     * 
+     * @param entityName
+     * @param statusError
+     * @param error
+     */
+    public ValidationErrorException(String entityName, Status statusError, ValidateError error) {
+        this(ErrorConstants.DEFAULT_TYPE, statusError, entityName, Arrays.asList(error));
     }
     
     public ValidationErrorException(URI type, Status statusError, String entityName, List<ValidateError> errors) {
@@ -46,7 +62,6 @@ public class ValidationErrorException extends ThrowableProblem {
         this.errors = Collections.unmodifiableList(errors);
         this.statusError = statusError;
     }
-
 	/**
      * Lay type.
      * @return type

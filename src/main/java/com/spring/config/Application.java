@@ -14,7 +14,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @SpringBootApplication
 @EntityScan("com.spring.model")
 @EnableJpaRepositories(basePackages="com.spring.repository")
-@ComponentScan(basePackages = {"com.spring.controller", "com.spring.service","com.spring.utils", "com.spring.mapper"})
+@ComponentScan(basePackages = {"com.spring.controller", "com.spring.service","com.spring.utils"})
 public class Application extends SpringBootServletInitializer {
 
     public static void main(String[] args) {

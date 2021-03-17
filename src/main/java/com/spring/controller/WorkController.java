@@ -22,18 +22,16 @@ import com.spring.utils.Paging;
 import com.spring.utils.ResponseUtil;
 
 import io.swagger.annotations.ApiOperation;
-import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequiredArgsConstructor
 @RequestMapping("/work")
 public class WorkController {
 
 	@Autowired
-	private final WorkService workService;
+	private WorkService workService;
     
     @GetMapping(value = "/")
-    @ApiOperation("Get list work with pagination")
+    @ApiOperation("Get list work with pagnation")
     public ResponseEntity<Paging<Work>> getAllWorks(Pageable pageable) {
         return ResponseUtil.wrap(workService.getAll(pageable), HttpStatus.OK);
     }

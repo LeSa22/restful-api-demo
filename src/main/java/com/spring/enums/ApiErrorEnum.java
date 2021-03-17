@@ -5,8 +5,8 @@ public enum ApiErrorEnum {
 	NOT_FOUND_ENUM("Not found enum");
 	
 	ApiErrorEnum(String text) {
-		this.text = text;
-	}
+        this.text = text;
+    }
 
 	public String getText() {
 		return text;

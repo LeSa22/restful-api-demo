@@ -2,15 +2,21 @@ logging:
   file:
     name: logs/application.log
 spring:
+  application:
+     name: app-api
   datasource:
      driver-class-name: com.mysql.cj.jdbc.Driver
      url: jdbc:mysql://localhost:3306/work-test?useSSL=false&serverTimezone=UTC
      username: root
      password: 123456
-  web:
-     pageable:
-       default-page-size: 50
-       one-indexed-parameters: true
+  data:
+    web:
+      pageable:
+        default-page-size: 50
+        one-indexed-parameters: true
+        page-parameter: pageNumber
+        size-parameter: pageSize 
+        sort-parameter: sorte
   jpa:
     hibernate:
        ddl-auto: update

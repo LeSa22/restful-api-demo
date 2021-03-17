@@ -15,9 +15,9 @@ import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.spring.enums.ApiErrorEnum;
 import com.spring.enums.StatusWorkEnum;
+import com.spring.error.BadRequestAlertException;
 import com.spring.error.ValidateError;
 import com.spring.error.ValidationErrorException;
-import com.spring.mapper.WorkMapper;
 import com.spring.model.QWork;
 import com.spring.model.Work;
 import com.spring.repository.WorkRespository;
@@ -58,16 +58,8 @@ public class WorkServiceImpl implements WorkService{
 
 	@Override
 	public Work update(Long id, @Valid WorkCreateUpdateRequest request) {
-		List<ValidateError> errors = new ArrayList<>();
-		Work entity = repo.findOne(BASE_PREDICATE.and(QWork.work.id.eq(id))).orElseThrow(() -> {
-            errors.add(new ValidateError("ID", ApiErrorEnum.NOT_FOUND_ID.getText()));
-            throw new ValidationErrorException(Work.class.getName(), Status.BAD_REQUEST, errors);
-        });
-
-        if (!errors.isEmpty()) {
-            throw new ValidationErrorException(Work.class.getName(),
-                    Status.EXPECTATION_FAILED, errors);
-        }
+		Work entity = repo.findOne(BASE_PREDICATE.and(QWork.work.id.eq(id)))
+				.orElseThrow(() -> new BadRequestAlertException(ApiErrorEnum.NOT_FOUND_ID.getText(), Work.class.getName(), "Id"));
         workMapper.updateEntity(request, entity);
         return repo.save(entity);
 	}
@@ -80,15 +72,10 @@ public class WorkServiceImpl implements WorkService{
 	
 	@Override
 	public void delete(Long id) {
-		List<ValidateError> errors = new ArrayList<>();
-        repo.findOne(BASE_PREDICATE.and(QWork.work.id.eq(id))).orElseThrow(() -> {
-            errors.add(new ValidateError("ID", ApiErrorEnum.NOT_FOUND_ID.getText()));
-            throw new ValidationErrorException(Work.class.getName(), Status.BAD_REQUEST, errors);
-        });
-        repo.findById(id).ifPresent(e -> {
-            e.setDeleted(true);
-            repo.save(e);
-        });
+		Work work = repo.findOne(BASE_PREDICATE.and(QWork.work.id.eq(id)))
+				.orElseThrow(() -> new BadRequestAlertException(ApiErrorEnum.NOT_FOUND_ID.getText(), Work.class.getName(), "Id"));
+    	work.setDeleted(true);
+        repo.save(work);
 	}
 
 }

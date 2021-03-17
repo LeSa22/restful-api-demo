@@ -1,16 +1,3 @@
-/*
- * Copyright 2020 (C) Green Global
- * 
- * Created on : May 29, 2020
- * Author     : Green Global
- *
- *-----------------------------------------------------------------------------
- * Revision History (Release 1.0.0.0)
- *-----------------------------------------------------------------------------
- * 1.0     AUTHOR :      Green Global
- * OLD     DATE   :      May 29, 2020
- */
-
 package com.spring.utils;
 
 import java.util.List;
@@ -19,12 +6,6 @@ import org.springframework.data.domain.Page;
 
 import lombok.Data;
 
-/**
- * Paging dto
- * @author trandtb 
- * @since 1.0
- * @created 09/07/2020 09:19:31
- */
 @Data
 public class Paging<T> {
     /**
@@ -54,11 +35,6 @@ public class Paging<T> {
 
     /**
      * Instantiates a new paging.
-     *
-     * @author trandtb 
-     * @since 1.0
-     * @created 09/07/2020 09:19:31
-     * @update PhucDD
      * @param dtos the dtos
      */
     Paging(List<T> dtos) {
@@ -67,11 +43,6 @@ public class Paging<T> {
 
     /**
      * Instantiates a new paging.
-     *
-     * @author trandtb 
-     * @since 1.0
-     * @created 09/07/2020 09:19:31
-     * @update PhucDD
      * @param page the page
      */
     Paging(Page<T> page) {
@@ -84,11 +55,6 @@ public class Paging<T> {
 
     /**
      * Instantiates a new paging.
-     *
-     * @author trandtb 
-	 * @since 1.0
-	 * @created 09/07/2020 09:19:31
-	 * @update PhucDD
      * @param entities the entities
      * @param dtos     the dtos
      */
@@ -101,12 +67,6 @@ public class Paging<T> {
     }
 
     /**
-     * Of.
-     *
-     * @author trandtb 
-     * @since 1.0
-     * @created 09/07/2020 09:19:31
-     * @update PhucDD
      * @param <T>  the generic type
      * @param dtos the dtos
      * @return the paging
@@ -116,12 +76,6 @@ public class Paging<T> {
     }
 
     /**
-     * Of.
-     *
-     * @author trandtb 
-     * @since 1.0
-     * @created 09/07/2020 09:19:31
-     * @update PhucDD
      * @param <T>      the generic type
      * @param entities the entities
      * @return the paging
@@ -131,12 +85,6 @@ public class Paging<T> {
     }
 
     /**
-     * Of.
-     *
-     * @author trandtb 
-     * @since 1.0
-     * @created 09/07/2020 09:19:31
-     * @update PhucDD
      * @param <T>      the generic type
      * @param entities the entities
      * @param dtos     the dtos
