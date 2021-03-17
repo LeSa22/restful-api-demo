@@ -6,7 +6,8 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="src" path="target/generated-sources/querydsl"/>
+	<classpathentry kind="src" path="target/generated-sources/mapstruct/com/spring/mapper"/>
+	<classpathentry kind="src" path="target/generated-sources/apt-maven-plugin"/>
 	<classpathentry excluding="**" kind="src" output="target/classes" path="src/main/resources">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
