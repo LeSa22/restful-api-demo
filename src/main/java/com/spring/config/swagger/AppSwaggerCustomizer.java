@@ -36,7 +36,7 @@ import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spring.web.plugins.Docket;
 
 /**
- * A swagger customizer to setup {@link Docket} with TCX settings.
+ * A swagger customizer to setup {@link Docket}
  * 
  */
 public class AppSwaggerCustomizer implements SwaggerCustomizer, Ordered {
