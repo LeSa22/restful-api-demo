@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.spring.enums.StatusWorkEnum;
 
 import lombok.AllArgsConstructor;
@@ -34,7 +36,9 @@ public class Work {
     
 	private String workName;
 	
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private LocalDateTime startingDate;
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private LocalDateTime endingDate;
 	
 	@Enumerated(EnumType.STRING)

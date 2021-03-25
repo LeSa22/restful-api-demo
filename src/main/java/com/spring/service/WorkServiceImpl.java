@@ -53,6 +53,7 @@ public class WorkServiceImpl implements WorkService{
         if (!errors.isEmpty()) {
             throw new ValidationErrorException(Work.class.getName(), Status.BAD_REQUEST, errors);
         }
+        System.out.println(request.getStatus() + "" + repo.save(workMapper.toEntity(request)));
         return repo.save(workMapper.toEntity(request));
 	}
 

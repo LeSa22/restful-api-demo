@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import com.spring.enums.StatusWorkEnum;
 
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 /**
  * dto request
@@ -12,6 +13,7 @@ import lombok.Data;
  *
  */
 @Data
+@AllArgsConstructor
 public class WorkCreateUpdateRequest {
 	
 	private boolean deleted;
