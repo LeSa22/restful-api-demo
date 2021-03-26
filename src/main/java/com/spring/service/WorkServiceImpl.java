@@ -2,6 +2,7 @@ package com.spring.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
@@ -53,7 +54,6 @@ public class WorkServiceImpl implements WorkService{
         if (!errors.isEmpty()) {
             throw new ValidationErrorException(Work.class.getName(), Status.BAD_REQUEST, errors);
         }
-        System.out.println(request.getStatus() + "" + repo.save(workMapper.toEntity(request)));
         return repo.save(workMapper.toEntity(request));
 	}
 
@@ -65,11 +65,6 @@ public class WorkServiceImpl implements WorkService{
         return repo.save(entity);
 	}
 
-	@Override
-	public Work save(Work loaiRuiRo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 	@Override
 	public void delete(Long id) {
@@ -77,6 +72,14 @@ public class WorkServiceImpl implements WorkService{
 				.orElseThrow(() -> new BadRequestAlertException(ApiErrorEnum.NOT_FOUND_ID.getText(), Work.class.getName(), "Id"));
     	work.setDeleted(true);
         repo.save(work);
+	}
+
+	@Override
+	public Optional<Work> getById(@Valid Long id) {
+		Optional<Work> work = Optional.of(repo.findOne(BASE_PREDICATE.and(QWork.work.id.eq(id)))
+				.orElseThrow(() -> new BadRequestAlertException(ApiErrorEnum.NOT_FOUND_ID.getText(), Work.class.getName(), "Id")));
+		
+		return work;
 	}
 
 }

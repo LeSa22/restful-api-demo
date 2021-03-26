@@ -1,5 +1,7 @@
 package com.spring.controller;
 
+import java.util.Optional;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +50,12 @@ public class WorkController {
             @Valid @RequestBody WorkCreateUpdateRequest request) {
         workService.update(id, request);
         return ResponseEntity.ok().build();
+    }
+    
+    @GetMapping(value = "/{id}")
+    @ApiOperation("Get work by id")
+    public ResponseEntity<Optional<Work>> getWorkById(@PathVariable Long id) {
+        return ResponseEntity.ok(workService.getById(id)) ;
     }
     
     @DeleteMapping(value = "/{id}")
